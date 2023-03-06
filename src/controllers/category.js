@@ -10,7 +10,7 @@ const createCategory = async (req, res) => {
 
     const category = await CategoryService.createCategory({ name });
 
-    return res.status(201).json({ id: category.null, name });
+    return res.status(201).json(category);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
