@@ -13,5 +13,6 @@ apiRoutes.post('/user', validateInputs, user.createUser);
 apiRoutes.get('/user', validateToken, user.getUsers);
 apiRoutes.get('/user/:id', validateToken, user.getUserById);
 apiRoutes.post('/categories', validateToken, category.createCategory);
+apiRoutes.get('/categories', validateToken, category.getCategories);
 
 module.exports = apiRoutes;
