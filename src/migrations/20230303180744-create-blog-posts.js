@@ -30,12 +30,12 @@ module.exports = {
       },
       published: {
         type: Sequelize.DATE,
-        defaultValue: DataTypes.NOW,
+        defaultValue: Sequelize.NOW,
         allowNull: false,
       },
       updated: {
         type: Sequelize.DATE,
-        defaultValue: DataTypes.NOW,
+        defaultValue: Sequelize.NOW,
         allowNull: false,
       },
     });
