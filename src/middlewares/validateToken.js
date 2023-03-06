@@ -9,7 +9,6 @@ module.exports = (req, res, next) => {
     }
 
     const payload = verifyToken(authorization);
-    console.log(payload);
     req.data = payload.data;
 
     next();
