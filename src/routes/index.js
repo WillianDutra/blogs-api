@@ -1,13 +1,11 @@
 const express = require('express');
 const { login, user, category, post } = require('../controllers');
 
-const validateInputs = require('../middlewares/validateNewUser');
-const validateToken = require('../middlewares/validateToken');
-const validateNewPost = require('../middlewares/validateNewPost');
-const validateCategory = require('../middlewares/validateCategory');
-const validateEditPost = require('../middlewares/validateEditPost');
-const validateUser = require('../middlewares/validateUser');
-const validatePost = require('../middlewares/validatePost');
+const {
+  validateInputs, validateToken, 
+  validateNewPost, validateCategory,
+  validateEditPost, validateUser, validatePost,
+} = require('../middlewares');
 
 const apiRoutes = express.Router();
 
