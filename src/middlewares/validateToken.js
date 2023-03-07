@@ -1,6 +1,6 @@
 const { verifyToken } = require('../auth/authFunctions');
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
   try {
     const { authorization } = req.headers;
 

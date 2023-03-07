@@ -21,4 +21,6 @@ const editBlogPost = ({ title, content, id }) => BlogPost
 const createPost = ({ title, content, userId }) => BlogPost
   .create({ title, content, userId });
 
-module.exports = { getPosts, getPostById, editBlogPost, createPost };
+const deletePost = (id) => BlogPost.destroy({ where: { id } });
+
+module.exports = { getPosts, getPostById, editBlogPost, createPost, deletePost };

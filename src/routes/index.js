@@ -6,6 +6,8 @@ const validateToken = require('../middlewares/validateToken');
 const validateNewPost = require('../middlewares/validateNewPost');
 const validateCategory = require('../middlewares/validateCategory');
 const validateEditPost = require('../middlewares/validateEditPost');
+const validateUser = require('../middlewares/validateUser');
+const validatePost = require('../middlewares/validatePost');
 
 const apiRoutes = express.Router();
 
@@ -18,6 +20,7 @@ apiRoutes.get('/categories', validateToken, category.getCategories);
 apiRoutes.post('/post', validateToken, validateNewPost, validateCategory, post.createPost);
 apiRoutes.get('/post', validateToken, post.getPosts);
 apiRoutes.get('/post/:id', validateToken, post.getPostById);
-apiRoutes.put('/post/:id', validateToken, validateEditPost, post.editBlogPost);
+apiRoutes.put('/post/:id', validateToken, validateEditPost, validateUser, post.editBlogPost);
+apiRoutes.delete('/post/:id', validateToken, validatePost, validateUser, post.deletePost);
 
 module.exports = apiRoutes;

@@ -30,11 +30,6 @@ const editBlogPost = async (req, res) => {
     const { title, content } = req.body;
     const { id } = req.params;
 
-    const { dataValues } = await BlogPostService.getPostById(id);
-    if (dataValues.userId !== req.data.id) {
-      return res.status(401).json({ message: 'Unauthorized user' });
-    }
-
     const post = await BlogPostService.editBlogPost({ title, content, id });
 
     return res.status(200).json(post);
@@ -58,4 +53,16 @@ const createPost = async (req, res) => {
   }
 };
 
-module.exports = { getPosts, getPostById, editBlogPost, createPost };
+const deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await BlogPostService.deletePost(id);
+    
+    return res.status(204).end();
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { getPosts, getPostById, editBlogPost, createPost, deletePost };
