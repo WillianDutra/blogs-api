@@ -14,7 +14,11 @@ const getPostById = (id) => BlogPost.findByPk(id, {
   ],
 });
 
+const editBlogPost = ({ title, content, id }) => BlogPost
+  .update({ title, content }, { where: { id } })
+  .then(() => getPostById(id));
+
 const createPost = ({ title, content, userId }) => BlogPost
   .create({ title, content, userId });
 
-module.exports = { getPosts, getPostById, createPost };
+module.exports = { getPosts, getPostById, editBlogPost, createPost };

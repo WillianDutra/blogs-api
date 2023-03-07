@@ -25,6 +25,24 @@ const getPostById = async (req, res) => {
   }
 };
 
+const editBlogPost = async (req, res) => {
+  try {
+    const { title, content } = req.body;
+    const { id } = req.params;
+
+    const { dataValues } = await BlogPostService.getPostById(id);
+    if (dataValues.userId !== req.data.id) {
+      return res.status(401).json({ message: 'Unauthorized user' });
+    }
+
+    const post = await BlogPostService.editBlogPost({ title, content, id });
+
+    return res.status(200).json(post);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 const createPost = async (req, res) => {
   try {
     const { title, content, categoryIds } = req.body;
@@ -40,4 +58,4 @@ const createPost = async (req, res) => {
   }
 };
 
-module.exports = { getPosts, getPostById, createPost };
+module.exports = { getPosts, getPostById, editBlogPost, createPost };
