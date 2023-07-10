@@ -1,7 +1,7 @@
 ## Talker Manager
 
 Foi construído uma API para um blog, utilizando Sequelize e MySQL para fazer o CRUD de postagens, além de possuir um sistema de login onde retorna um token JWT.
-## Apredizados com este projeto
+## Aprendizados com este projeto
 
 - Node.js
 - Sequelize
